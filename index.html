@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026-06-17 A股盘后总结</title>
+    <title>A股盘后动态复盘</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg-primary: #0a0e17;
             --bg-secondary: #111827;
@@ -25,7 +20,6 @@
             --down-color: #22c55e;
             --border-color: #2d3748;
         }
-
         body {
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -33,142 +27,73 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        /* 背景动画 */
         .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden;
         }
-
         .bg-animation::before {
             content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
                         radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.03) 0%, transparent 50%),
                         radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
             animation: bgPulse 20s ease-in-out infinite;
         }
-
-        @keyframes bgPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        /* 浮动粒子 */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
+        @keyframes bgPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
         .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(245, 158, 11, 0.4);
-            border-radius: 50%;
+            position: absolute; width: 2px; height: 2px;
+            background: rgba(245, 158, 11, 0.4); border-radius: 50%;
             animation: float 15s infinite;
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            10% { opacity: 1; } 90% { opacity: 1; }
             100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
         }
-
-        /* 主容器 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 头部 */
-        .header {
-            padding: 40px 0 20px;
-            text-align: center;
-            position: relative;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header { padding: 40px 0 20px; text-align: center; position: relative; }
         .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100px; height: 3px;
             background: linear-gradient(90deg, transparent, var(--accent-gold), var(--accent-orange), transparent);
             animation: lineGlow 3s ease-in-out infinite;
         }
-
-        @keyframes lineGlow {
-            0%, 100% { opacity: 0.5; width: 100px; }
-            50% { opacity: 1; width: 200px; }
-        }
-
+        @keyframes lineGlow { 0%, 100% { opacity: 0.5; width: 100px; } 50% { opacity: 1; width: 200px; } }
         .header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2.5rem; font-weight: 800;
             background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange), #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-            animation: titleSlide 1s ease-out;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 8px; animation: titleSlide 1s ease-out;
         }
-
-        @keyframes titleSlide {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .header .subtitle {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            animation: fadeIn 1.5s ease-out;
-        }
-
+        @keyframes titleSlide { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .header .subtitle { color: var(--text-secondary); font-size: 0.9rem; animation: fadeIn 1.5s ease-out; }
         .header .summary-text {
-            margin-top: 15px;
-            padding: 12px 20px;
+            margin-top: 15px; padding: 12px 20px;
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.05));
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-radius: 8px;
-            color: var(--accent-gold);
-            font-size: 0.85rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeIn 2s ease-out;
+            border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px;
+            color: var(--accent-gold); font-size: 0.85rem; max-width: 800px;
+            margin-left: auto; margin-right: auto; animation: fadeIn 2s ease-out;
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .controls {
+            display: flex; justify-content: center; gap: 12px; margin: 20px 0;
+            flex-wrap: wrap;
         }
-
-        /* 板块通用样式 */
-        .section {
-            margin: 30px 0;
-            animation: sectionAppear 0.8s ease-out forwards;
-            opacity: 0;
+        .btn {
+            padding: 8px 20px; border-radius: 6px; border: 1px solid var(--border-color);
+            background: var(--bg-card); color: var(--text-primary); cursor: pointer;
+            font-size: 0.85rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;
         }
+        .btn:hover { background: var(--bg-card-hover); border-color: var(--accent-gold); transform: translateY(-2px); }
+        .btn-primary { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(249, 115, 22, 0.1)); border-color: var(--accent-gold); color: var(--accent-gold); }
+        .btn-primary:hover { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+        .update-time { color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 8px; }
+        .loading { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border-color); border-top-color: var(--accent-gold); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
+        .section { margin: 30px 0; animation: sectionAppear 0.8s ease-out forwards; opacity: 0; }
         .section:nth-child(1) { animation-delay: 0.1s; }
         .section:nth-child(2) { animation-delay: 0.2s; }
         .section:nth-child(3) { animation-delay: 0.3s; }
@@ -178,528 +103,127 @@
         .section:nth-child(7) { animation-delay: 0.7s; }
         .section:nth-child(8) { animation-delay: 0.8s; }
         .section:nth-child(9) { animation-delay: 0.9s; }
-
-        @keyframes sectionAppear {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        @keyframes sectionAppear { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.2rem; font-weight: 700; color: var(--accent-gold);
+            margin-bottom: 15px; display: flex; align-items: center; gap: 10px;
         }
-
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(180deg, var(--accent-gold), var(--accent-orange));
-            border-radius: 2px;
-        }
-
+        .section-title::before { content: ''; width: 4px; height: 20px;
+            background: linear-gradient(180deg, var(--accent-gold), var(--accent-orange)); border-radius: 2px; }
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 20px; transition: all 0.3s ease;
+            position: relative; overflow: hidden;
         }
-
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 0; transition: opacity 0.3s ease;
         }
+        .card:hover::before { opacity: 1; }
+        .card:hover { transform: translateY(-3px); border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 158, 11, 0.05); }
+        .error-msg { color: var(--up-color); font-size: 0.85rem; padding: 10px; background: rgba(239, 68, 68, 0.05); border-radius: 6px; margin-top: 10px; }
 
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(245, 158, 11, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(245, 158, 11, 0.05);
-        }
-
-        /* 表格样式 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-
-        th {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--accent-gold);
-            padding: 10px 8px;
-            text-align: left;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        td {
-            padding: 10px 8px;
-            border-bottom: 1px solid rgba(45, 55, 72, 0.5);
-            transition: background 0.2s ease;
-        }
-
-        tr:hover td {
-            background: rgba(245, 158, 11, 0.03);
-        }
-
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: rgba(245, 158, 11, 0.1); color: var(--accent-gold); padding: 10px 8px;
+            text-align: left; font-weight: 600; border-bottom: 1px solid var(--border-color); }
+        td { padding: 10px 8px; border-bottom: 1px solid rgba(45, 55, 72, 0.5); transition: background 0.2s ease; }
+        tr:hover td { background: rgba(245, 158, 11, 0.03); }
         .up { color: var(--up-color); font-weight: 600; }
         .down { color: var(--down-color); font-weight: 600; }
         .neutral { color: var(--text-secondary); }
+        .flash-up { animation: flashUp 0.5s ease; }
+        .flash-down { animation: flashDown 0.5s ease; }
+        @keyframes flashUp { 0% { background: rgba(239, 68, 68, 0.2); } 100% { background: transparent; } }
+        @keyframes flashDown { 0% { background: rgba(34, 197, 94, 0.2); } 100% { background: transparent; } }
 
-        /* 指数卡片网格 */
-        .index-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
+        .index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
         .index-card {
             background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid var(--border-color); border-radius: 10px; padding: 15px;
+            text-align: center; transition: all 0.3s ease; cursor: pointer;
+            position: relative; overflow: hidden;
         }
-
-        .index-card:hover {
-            transform: scale(1.03);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .index-card .name {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-        }
-
-        .index-card .value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .index-card .change {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .index-card .info {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-        }
-
-        /* 双栏布局 */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .index-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-        }
-
-        /* 概念主线 */
-        .concept-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .concept-item {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), transparent);
-            border-left: 3px solid var(--accent-gold);
-            padding: 12px 15px;
-            border-radius: 0 8px 8px 0;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .concept-item:hover {
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), transparent);
-            transform: translateX(5px);
-        }
-
-        .concept-rank {
-            font-weight: 700;
-            color: var(--accent-gold);
-            min-width: 24px;
-        }
-
-        .concept-name {
-            font-weight: 600;
-            flex: 1;
-        }
-
-        .concept-data {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .concept-stocks {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            width: 100%;
-            margin-top: 4px;
-        }
-
-        /* 梯队标签 */
-        .tier-tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tier-tag {
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .tier-front { background: rgba(239, 68, 68, 0.15); color: var(--up-color); }
-        .tier-mid { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); }
-        .tier-back { background: rgba(34, 197, 94, 0.15); color: var(--down-color); }
-
-        /* 情绪周期 */
-        .emotion-cycle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1), rgba(34, 197, 94, 0.1));
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .emotion-cycle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--up-color), var(--accent-gold), var(--down-color));
-            opacity: 0.3;
-        }
-
-        .emotion-stage {
-            text-align: center;
-            z-index: 1;
-            padding: 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .emotion-stage:hover {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .emotion-stage.active {
-            background: rgba(245, 158, 11, 0.2);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
-        }
-
-        .emotion-stage .stage-name {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-
-        .emotion-stage .stage-status {
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        /* 持仓卡片 */
-        .position-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .position-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .position-card:hover {
-            border-color: rgba(245, 158, 11, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .position-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .position-name {
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .position-action {
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--accent-gold);
-        }
-
-        .position-detail {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* 信号提示 */
-        .signal-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .signal-card {
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid;
-        }
-
-        .signal-watch {
-            background: rgba(245, 158, 11, 0.05);
-            border-color: rgba(245, 158, 11, 0.2);
-        }
-
-        .signal-risk {
-            background: rgba(239, 68, 68, 0.05);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-
-        .signal-title {
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .signal-watch .signal-title { color: var(--accent-gold); }
-        .signal-risk .signal-title { color: var(--up-color); }
-
-        .signal-list {
-            list-style: none;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .signal-list li {
-            padding: 4px 0;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .signal-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-
-        .signal-watch .signal-list li::before { background: var(--accent-gold); }
-        .signal-risk .signal-list li::before { background: var(--up-color); }
-
-        /* 来源 */
-        .source-text {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
-            line-height: 1.8;
-        }
-
-        /* 数字动画 */
-        .count-up {
-            display: inline-block;
-        }
-
-        /* 滚动进度条 */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
-
-        /* 底部 */
-        .footer {
-            text-align: center;
-            padding: 30px 0;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        /* 工具提示 */
-        .tooltip {
-            position: relative;
-        }
-
-        .tooltip:hover::after {
-            content: attr(data-tip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 5px 10px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            z-index: 10;
-            color: var(--text-secondary);
-        }
-
-        /* 脉冲动画 */
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /*  shimmer效果 */
-        .shimmer {
-            position: relative;
-            overflow: hidden;
-        }
-
+        .index-card:hover { transform: scale(1.03); border-color: rgba(245, 158, 11, 0.3); }
+        .index-card .name { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; }
+        .index-card .value { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        .index-card .change { font-size: 0.85rem; font-weight: 600; }
+        .index-card .info { font-size: 0.75rem; color: var(--text-muted); margin-top: 5px; }
         .shimmer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
             animation: shimmer 3s infinite;
         }
+        @keyframes shimmer { 100% { left: 100%; } }
 
-        @keyframes shimmer {
-            100% { left: 100%; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) {
+            .two-column { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8rem; }
+            .index-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
         }
+
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
+            z-index: 1000; transition: width 0.1s ease; }
+
+        .footer { text-align: center; padding: 30px 0; color: var(--text-muted);
+            font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 40px; }
+
+        .emotion-cycle { display: flex; justify-content: space-between; align-items: center; padding: 20px;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1), rgba(34, 197, 94, 0.1));
+            border-radius: 10px; position: relative; overflow: hidden;
+        }
+        .emotion-cycle::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--up-color), var(--accent-gold), var(--down-color)); opacity: 0.3; }
+        .emotion-stage { text-align: center; z-index: 1; padding: 10px; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; }
+        .emotion-stage:hover { transform: scale(1.1); background: rgba(255, 255, 255, 0.05); }
+        .emotion-stage.active { background: rgba(245, 158, 11, 0.2); box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+        .emotion-stage .stage-name { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .emotion-stage .stage-status { font-size: 0.9rem; font-weight: 700; }
     </style>
 </head>
 <body>
-    <!-- 背景动画 -->
     <div class="bg-animation"></div>
     <div class="particles" id="particles"></div>
-    
-    <!-- 滚动进度条 -->
     <div class="progress-bar" id="progressBar"></div>
 
     <div class="container">
-        <!-- 头部 -->
         <header class="header">
-            <h1>2026-06-17 A股盘后总结</h1>
-            <p class="subtitle">数据时间: 2026-06-17 15:00 | 复盘只为记录个人认知与交易体系</p>
-            <div class="summary-text">
-                📊 收盘总结：今日是情绪较活跃期，不是强更强。主线从早到晚的聚焦是PCB/面板，下午扩散到半导体、存储芯片、设备、材料，穿插光模块。电力设备、化工、汽车、医药和周期等被资金抛弃。
+            <h1>A股动态复盘</h1>
+            <p class="subtitle" id="subtitle">数据实时获取中...</p>
+            <div class="summary-text" id="marketSummary">
+                📊 数据自动获取中，请稍候...
             </div>
         </header>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="refreshAllData()">
+                <span id="refreshIcon">🔄</span> 立即刷新
+            </button>
+            <button class="btn" onclick="toggleAutoRefresh()">
+                <span id="autoIcon">⏸️</span> 自动刷新: <span id="autoStatus">开启</span>
+            </button>
+            <button class="btn" onclick="showFallback()">
+                📋 手动数据模式
+            </button>
+        </div>
+        <p class="update-time" id="updateTime">更新时间: --</p>
 
         <!-- 指数与市场风格 -->
         <section class="section">
             <h2 class="section-title">指数与市场风格</h2>
-            <div class="index-grid">
-                <div class="index-card shimmer">
-                    <div class="name">上证指数</div>
-                    <div class="value up">4106.08</div>
-                    <div class="change up">+0.40%</div>
-                    <div class="info">1.40万亿 | 705/1534/28</div>
-                </div>
-                <div class="index-card shimmer">
-                    <div class="name">深证成指</div>
-                    <div class="value up">15890.95</div>
-                    <div class="change up">+1.31%</div>
-                    <div class="info">1.69万亿 | 841/2055/25</div>
-                </div>
-                <div class="index-card shimmer">
-                    <div class="name">创业板指</div>
-                    <div class="value up">4167.05</div>
-                    <div class="change up">+1.55%</div>
-                    <div class="info">8304亿 | 476/512/8</div>
-                </div>
-                <div class="index-card shimmer">
-                    <div class="name">沪深300</div>
-                    <div class="value up">4931.39</div>
-                    <div class="change up">+0.97%</div>
-                    <div class="info">8504亿 | 135/161/3</div>
-                </div>
-                <div class="index-card shimmer">
-                    <div class="name">科创50</div>
-                    <div class="value up">1840.82</div>
-                    <div class="change up">+4.69%</div>
-                    <div class="info">1769亿 | 36/14/0</div>
-                </div>
+            <div class="index-grid" id="indexGrid">
+                <div class="index-card shimmer"><div class="name">上证指数</div><div class="value">--</div><div class="change">--</div></div>
+                <div class="index-card shimmer"><div class="name">深证成指</div><div class="value">--</div><div class="change">--</div></div>
+                <div class="index-card shimmer"><div class="name">创业板指</div><div class="value">--</div><div class="change">--</div></div>
+                <div class="index-card shimmer"><div class="name">沪深300</div><div class="value">--</div><div class="change">--</div></div>
+                <div class="index-card shimmer"><div class="name">科创50</div><div class="value">--</div><div class="change">--</div></div>
             </div>
             <div class="card">
-                <div style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <strong style="color: var(--accent-gold);">市场风格：</strong>指数红，但个股表现一般。电子/科技大幅贡献。科技风格明显强。权重有明显承接。
+                <div id="marketStyle" style="font-size: 0.85rem; color: var(--text-secondary);">
+                    <strong style="color: var(--accent-gold);">市场风格：</strong>数据加载中...
                 </div>
             </div>
         </section>
@@ -709,546 +233,379 @@
             <h2 class="section-title">行业资金流向</h2>
             <div class="two-column">
                 <div class="card">
-                    <h3 style="font-size: 1rem; color: var(--up-color); margin-bottom: 15px;">🔴 行业主力净流入</h3>
-                    <table>
-                        <tr>
-                            <th>行业</th>
-                            <th>涨幅</th>
-                            <th>主力净流入</th>
-                            <th>意义</th>
-                        </tr>
-                        <tr>
-                            <td><strong>电子</strong></td>
-                            <td class="up">+3.22%</td>
-                            <td class="up">+25.98亿</td>
-                            <td>全天最强资金池</td>
-                        </tr>
-                        <tr>
-                            <td><strong>半导体</strong></td>
-                            <td class="up">+4.13%</td>
-                            <td class="up">+15.01亿</td>
-                            <td>早盘分歧后午后全面爆发</td>
-                        </tr>
-                        <tr>
-                            <td><strong>光学光电子</strong></td>
-                            <td class="up">+3.01%</td>
-                            <td class="up">+8.78亿</td>
-                            <td>存储/AI芯片成为午后主线</td>
-                        </tr>
-                        <tr>
-                            <td><strong>计算机设备</strong></td>
-                            <td class="up">+3.36%</td>
-                            <td class="up">+5.68亿</td>
-                            <td>光模块链爆发</td>
-                        </tr>
-                        <tr>
-                            <td><strong>计算机</strong></td>
-                            <td class="up">+4.76%</td>
-                            <td class="up">+4.60亿</td>
-                            <td>京东方A、TCL科技带队</td>
-                        </tr>
-                        <tr>
-                            <td><strong>计算机设备</strong></td>
-                            <td class="up">+6.30%</td>
-                            <td class="up">+28.48亿</td>
-                            <td>光模块、PCB、玻璃等扩散</td>
-                        </tr>
-                        <tr>
-                            <td><strong>通信</strong></td>
-                            <td class="up">+4.22%</td>
-                            <td class="up">+24.23亿</td>
-                            <td>长电、通富、华大走强</td>
-                        </tr>
-                        <tr>
-                            <td><strong>元件</strong></td>
-                            <td class="up">+4.15%</td>
-                            <td class="up">+20.25亿</td>
-                            <td>PCB/驱动芯片/存储下午全面传导</td>
-                        </tr>
-                    </table>
+                    <h3 style="font-size: 1rem; color: var(--up-color); margin-bottom: 15px;">🔴 主力净流入 TOP</h3>
+                    <div id="inflowTop">
+                        <div style="text-align:center;padding:20px;color:var(--text-muted);"><span class="loading"></span> 加载中...</div>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3 style="font-size: 1rem; color: var(--down-color); margin-bottom: 15px;">🟢 行业主力净流出</h3>
-                    <table>
-                        <tr>
-                            <th>行业</th>
-                            <th>跌幅</th>
-                            <th>主力净流出</th>
-                            <th>意义</th>
-                        </tr>
-                        <tr>
-                            <td><strong>有色金属</strong></td>
-                            <td class="down">-1.06%</td>
-                            <td class="down">-9.17亿</td>
-                            <td>资源端强回</td>
-                        </tr>
-                        <tr>
-                            <td><strong>电力设备</strong></td>
-                            <td class="down">-0.81%</td>
-                            <td class="down">-7.39亿</td>
-                            <td>800V所在大类不是今天主攻</td>
-                        </tr>
-                        <tr>
-                            <td><strong>小金属</strong></td>
-                            <td class="down">-2.43%</td>
-                            <td class="down">-7.58亿</td>
-                            <td>铜/铝/稀土分时段回落</td>
-                        </tr>
-                        <tr>
-                            <td><strong>化学制品</strong></td>
-                            <td class="down">-0.62%</td>
-                            <td class="down">-5.58亿</td>
-                            <td>涨价线不被资金选择</td>
-                        </tr>
-                        <tr>
-                            <td><strong>电池</strong></td>
-                            <td class="down">-0.10%</td>
-                            <td class="down">-4.52亿</td>
-                            <td>新能源链退</td>
-                        </tr>
-                        <tr>
-                            <td><strong>通信</strong></td>
-                            <td class="down">-0.22%</td>
-                            <td class="down">-3.59亿</td>
-                            <td>CPO/通信不如半导体</td>
-                        </tr>
-                        <tr>
-                            <td><strong>汽车</strong></td>
-                            <td class="down">-0.90%</td>
-                            <td class="down">-2.56亿</td>
-                            <td>新能源整车与零部件承压</td>
-                        </tr>
-                        <tr>
-                            <td><strong>传媒</strong></td>
-                            <td class="down">-2.00%</td>
-                            <td class="down">-27.52亿</td>
-                            <td>题材资金追高</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 概念与主线推演 -->
-        <section class="section">
-            <h2 class="section-title">概念与主线推演</h2>
-            <div class="card">
-                <div class="concept-list">
-                    <div class="concept-item">
-                        <span class="concept-rank">1</span>
-                        <span class="concept-name">半导体/存储芯片</span>
-                        <span class="concept-data">半导体概念: +70亿, 存储芯片: +14.8亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-front">兆易创新</span>
-                            <span class="tier-tag tier-front">德明利</span>
-                            <span class="tier-tag tier-front">普冉股份</span>
-                            <span class="tier-tag tier-mid">澜起科技</span>
-                        </span>
-                        <span class="concept-stocks">状态：主升确认 | 明日意义：明天看存储是否继续扩散，还是前排高开兑现</span>
-                    </div>
-                    <div class="concept-item">
-                        <span class="concept-rank">2</span>
-                        <span class="concept-name">消费电子/面板/显示</span>
-                        <span class="concept-data">消费电子: +56.8亿, 面板: +6.1亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-front">京东方A</span>
-                            <span class="tier-tag tier-front">TCL科技</span>
-                            <span class="tier-tag tier-mid">长信科技</span>
-                            <span class="tier-tag tier-mid">伟时电子</span>
-                        </span>
-                        <span class="concept-stocks">状态：主升确认 | 明日意义：京东方A封单是否减少观察</span>
-                    </div>
-                    <div class="concept-item">
-                        <span class="concept-rank">3</span>
-                        <span class="concept-name">PCB/元件/CCL</span>
-                        <span class="concept-data">元件: +20.3亿, PCB: +6.8亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-front">鹏鼎控股</span>
-                            <span class="tier-tag tier-front">深南电路</span>
-                            <span class="tier-tag tier-mid">沪电股份</span>
-                            <span class="tier-tag tier-mid">胜宏科技</span>
-                        </span>
-                        <span class="concept-stocks">状态：强分化 | 明日意义：前排还能看，后排追高性价比下降</span>
-                    </div>
-                    <div class="concept-item">
-                        <span class="concept-rank">4</span>
-                        <span class="concept-name">玻璃基板</span>
-                        <span class="concept-data">+4.94%, 主力: +5.86亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-front">中国巨石</span>
-                            <span class="tier-tag tier-mid">旗滨集团</span>
-                            <span class="tier-tag tier-mid">长信科技</span>
-                            <span class="tier-tag tier-back">美迪凯</span>
-                        </span>
-                        <span class="concept-stocks">状态：确认/加速 | 明日意义：今天高潮，明天只看前排持续性</span>
-                    </div>
-                    <div class="concept-item">
-                        <span class="concept-rank">5</span>
-                        <span class="concept-name">半导体设备/材料</span>
-                        <span class="concept-data">设备: +28.4亿, 材料: +6.98亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-front">中微公司</span>
-                            <span class="tier-tag tier-mid">拓荆科技</span>
-                            <span class="tier-tag tier-mid">盛美上海</span>
-                            <span class="tier-tag tier-back">华特气体</span>
-                        </span>
-                        <span class="concept-stocks">状态：扩散中 | 明日意义：看是否由存储带动继续轮动</span>
-                    </div>
-                    <div class="concept-item">
-                        <span class="concept-rank">6</span>
-                        <span class="concept-name">800V/电力设备</span>
-                        <span class="concept-data">电力设备: +7.3亿</span>
-                        <span class="tier-tags">
-                            <span class="tier-tag tier-mid">麦格米特</span>
-                            <span class="tier-tag tier-mid">欧陆通</span>
-                            <span class="tier-tag tier-back">铂科</span>
-                        </span>
-                        <span class="concept-stocks">状态：观察阶段 | 明日意义：除核心外，后排不占优</span>
+                    <h3 style="font-size: 1rem; color: var(--down-color); margin-bottom: 15px;">🟢 主力净流出 TOP</h3>
+                    <div id="outflowTop">
+                        <div style="text-align:center;padding:20px;color:var(--text-muted);"><span class="loading"></span> 加载中...</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 关键催化 -->
+        <!-- 概念板块排行 -->
         <section class="section">
-            <h2 class="section-title">关键催化：时间与来源</h2>
+            <h2 class="section-title">概念板块涨幅排行</h2>
             <div class="card">
-                <table>
-                    <tr>
-                        <th>方向</th>
-                        <th>时间</th>
-                        <th>来源</th>
-                        <th>内容</th>
-                    </tr>
-                    <tr>
-                        <td><strong>玻璃基板</strong></td>
-                        <td>6月16日/6月17日10:58/三次发酵</td>
-                        <td>券商研报/东方财富</td>
-                        <td>台媒称苹果/华为供应链均在布局/玻璃基板封装计划，首次公开</td>
-                    </tr>
-                    <tr>
-                        <td><strong>PCB/CCL</strong></td>
-                        <td>6月15日/6月17日早盘持续发酵</td>
-                        <td>证券研报/东方财富</td>
-                        <td>建滔积层板涨价，PCB/CCL产能扩张，量价齐升逻辑延续</td>
-                    </tr>
-                    <tr>
-                        <td><strong>存储芯片</strong></td>
-                        <td>6月17日13:04</td>
-                        <td>财联社</td>
-                        <td>摩根士丹利：AI数据中心推动存储需求，旺盛供应紧张，短期或已至。2026年</td>
-                    </tr>
-                    <tr>
-                        <td><strong>面板/显示</strong></td>
-                        <td>6月17日全天盘面确认</td>
-                        <td>东方财富行情资金</td>
-                        <td>大尺寸面板涨价+催化，主要跟随消费电子/玻璃基板/显示技术</td>
-                    </tr>
-                </table>
+                <div id="conceptRank">
+                    <div style="text-align:center;padding:20px;color:var(--text-muted);"><span class="loading"></span> 加载中...</div>
+                </div>
             </div>
         </section>
 
-        <!-- 前排/中军/后排 -->
-        <section class="section">
-            <h2 class="section-title">前排/中军/后排</h2>
-            <div class="card">
-                <table>
-                    <tr>
-                        <th>方向</th>
-                        <th>标的</th>
-                        <th>表现</th>
-                        <th>资金</th>
-                        <th>判断</th>
-                    </tr>
-                    <tr>
-                        <td><strong>大票/总龙</strong></td>
-                        <td>京东方A、兆易创新</td>
-                        <td class="up">均涨停</td>
-                        <td class="up">京东方A +31.75亿, 兆易+25.5亿</td>
-                        <td>一个代表显示，一个代表存储；明天开盘锚</td>
-                    </tr>
-                    <tr>
-                        <td><strong>存储前排</strong></td>
-                        <td>德明利、普冉股份、澜起科技、聚辰股份</td>
-                        <td class="up">多股/前排/20cm</td>
-                        <td class="up">澜起+5.13亿, 聚辰+5.13亿</td>
-                        <td>午后资金主攻，明天防高开兑现</td>
-                    </tr>
-                    <tr>
-                        <td><strong>PCB前排</strong></td>
-                        <td>鹏鼎控股、深南电路、沪电股份、胜宏科技</td>
-                        <td class="up">前排/连板/缩量</td>
-                        <td class="up">鹏鼎+5.47亿, 深南+7.24亿</td>
-                        <td>持续性比后排更好</td>
-                    </tr>
-                    <tr>
-                        <td><strong>玻璃基板前排</strong></td>
-                        <td>中国巨石、旗滨集团、长信科技、美迪凯、帝尔激光</td>
-                        <td class="up">多只涨停/20cm</td>
-                        <td class="up">中国巨石+7.86亿, 长信+3.69亿</td>
-                        <td>情绪高潮，后排不要追</td>
-                    </tr>
-                    <tr>
-                        <td><strong>800V/核心</strong></td>
-                        <td>麦格米特、欧陆通、铂科新材</td>
-                        <td class="up">麦格/特+9.33%, 欧陆通+0.27%, 铂科+2.14%</td>
-                        <td class="up">麦格米特+5.23亿, 欧陆通+1.12亿</td>
-                        <td>麦格米特超预期但资金偏紧，板块未扩散</td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- 情绪周期 -->
+        <!-- 情绪周期（手动） -->
         <section class="section">
             <h2 class="section-title">情绪周期</h2>
             <div class="card">
                 <div class="emotion-cycle">
-                    <div class="emotion-stage">
-                        <div class="stage-name">冰点</div>
-                        <div class="stage-status neutral">○</div>
-                    </div>
-                    <div class="emotion-stage">
-                        <div class="stage-name">复苏</div>
-                        <div class="stage-status neutral">○</div>
-                    </div>
-                    <div class="emotion-stage">
-                        <div class="stage-name">发酵</div>
-                        <div class="stage-status neutral">○</div>
-                    </div>
-                    <div class="emotion-stage active pulse">
-                        <div class="stage-name">高潮</div>
-                        <div class="stage-status up">●</div>
-                    </div>
-                    <div class="emotion-stage">
-                        <div class="stage-name">退潮</div>
-                        <div class="stage-status neutral">○</div>
-                    </div>
-                    <div class="emotion-stage">
-                        <div class="stage-name">冰点</div>
-                        <div class="stage-status neutral">○</div>
-                    </div>
+                    <div class="emotion-stage" onclick="setEmotion(this)"><div class="stage-name">冰点</div><div class="stage-status">○</div></div>
+                    <div class="emotion-stage" onclick="setEmotion(this)"><div class="stage-name">复苏</div><div class="stage-status">○</div></div>
+                    <div class="emotion-stage" onclick="setEmotion(this)"><div class="stage-name">发酵</div><div class="stage-status">○</div></div>
+                    <div class="emotion-stage active" onclick="setEmotion(this)"><div class="stage-name">高潮</div><div class="stage-status">●</div></div>
+                    <div class="emotion-stage" onclick="setEmotion(this)"><div class="stage-name">退潮</div><div class="stage-status">○</div></div>
+                    <div class="emotion-stage" onclick="setEmotion(this)"><div class="stage-name">冰点</div><div class="stage-status">○</div></div>
                 </div>
                 <div style="margin-top: 15px; padding: 12px; background: rgba(245, 158, 11, 0.05); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <strong style="color: var(--accent-gold);">当前判断：</strong>情绪处于高潮阶段，科技线全面爆发，但需警惕 tomorrow's 分化。高潮次日一般不适合新开仓，只适合持有或减仓。
+                    <strong style="color: var(--accent-gold);">当前判断：</strong>情绪处于高潮阶段，科技线全面爆发，但需警惕次日分化。高潮次日一般不适合新开仓，只适合持有或减仓。
                 </div>
             </div>
         </section>
 
-        <!-- 持仓影响 -->
+        <!-- 手动编辑区域（复盘笔记） -->
         <section class="section">
-            <h2 class="section-title">持仓影响</h2>
-            <div class="position-grid">
-                <div class="position-card">
-                    <div class="position-header">
-                        <span class="position-name">东方财富</span>
-                        <span class="position-action">观察</span>
-                    </div>
-                    <div class="position-detail">指数搭台，但非主线。确认AI/科技链，明天看前排持续性。</div>
-                </div>
-                <div class="position-card">
-                    <div class="position-header">
-                        <span class="position-name">澜起科技</span>
-                        <span class="position-action">持有</span>
-                    </div>
-                    <div class="position-detail">+7.51% | +5.13亿 | 午后存储芯片一强，不可再追高；明天看是否高开后有承接。</div>
-                </div>
-                <div class="position-card">
-                    <div class="position-header">
-                        <span class="position-name">欧陆通</span>
-                        <span class="position-action">观察</span>
-                    </div>
-                    <div class="position-detail">+0.27% | -1.12亿 | 800V/电源链，弱于主线。若明天800V仍不强，考虑资金效率。</div>
-                </div>
-                <div class="position-card">
-                    <div class="position-header">
-                        <span class="position-name">鹏鼎控股</span>
-                        <span class="position-action">持有</span>
-                    </div>
-                    <div class="position-detail">+涨停/缩量 | +5.47亿 | 前排核心，持续性比后排更好。</div>
+            <h2 class="section-title">复盘笔记（可编辑）</h2>
+            <div class="card">
+                <div contenteditable="true" style="min-height: 120px; outline: none; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.8;"
+                    onblur="localStorage.setItem('reviewNotes', this.innerHTML)"
+                    id="reviewNotes">
+                    <p>💡 在这里记录你的复盘笔记...</p>
+                    <p>• 今日主线：PCB/面板 → 半导体/存储 → 光模块</p>
+                    <p>• 明日关注：京东方A封单、存储前排持续性</p>
+                    <p>• 风险点：高潮次日防分化、后排追高</p>
                 </div>
             </div>
         </section>
 
-        <!-- 明日前点与失效信号 -->
-        <section class="section">
-            <h2 class="section-title">明日前点与失效信号</h2>
-            <div class="signal-box">
-                <div class="signal-card signal-watch">
-                    <div class="signal-title">👁️ 明日锚点</div>
-                    <ul class="signal-list">
-                        <li>存储芯片：兆易创新、德明利、普冉股份、澜起科技、聚辰股份</li>
-                        <li>显示/面板：京东方A、TCL科技、长信科技</li>
-                        <li>PCB/CCL：鹏鼎控股、深南电路、沪电股份、胜宏科技</li>
-                        <li>玻璃基板：中国巨石、旗滨集团、长信科技、美迪凯、帝尔激光</li>
-                        <li>800V核心：麦格米特、欧陆通、铂科新材、中信电气</li>
-                    </ul>
-                </div>
-                <div class="signal-card signal-risk">
-                    <div class="signal-title">⚠️ 失效信号</div>
-                    <ul class="signal-list">
-                        <li>前排高开不炸，中军放量承接</li>
-                        <li>京东方A封单稳定，TCL持续放量</li>
-                        <li>前排不转弱，后排不补跌</li>
-                        <li>高标继续一字/高开换手，材料/设备共振</li>
-                        <li>麦格米特/欧陆通/铂科 冲高不回落</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card" style="margin-top: 15px;">
-                <div style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <strong style="color: var(--accent-gold);">策略：</strong>若以上信号/锚点与情绪一致，还是先看科技线再扩散；若前排与后排出现分化，观察是否出现负反馈。晚问可简单更新龙虎榜，重点看存储芯片、玻璃基板、PCB前排是否有机构/量化席位确认。
-                </div>
-            </div>
-        </section>
-
-        <!-- 来源 -->
-        <section class="section">
-            <h2 class="section-title">来源</h2>
-            <div class="source-text">
-                东方财富/公开行情/资金流向；东方财富行业；界面新闻/东方财富《摩根士丹利：AI数据中心推动存储需求》；财联社《存储芯片概念》；东方财富/龙虎榜。
-            </div>
-        </section>
-
-        <!-- 底部 -->
         <footer class="footer">
-            <p>复盘日期：2026-06-17 | 本总结仅供个人记录与交易体系复盘使用</p>
-            <p style="margin-top: 5px; font-size: 0.75rem;">动态网页生成 | 数据仅供参考，不构成投资建议</p>
+            <p>数据来自新浪财经、东方财富 | 本页面仅供个人复盘使用</p>
+            <p style="margin-top: 5px; font-size: 0.75rem;">动态网页 | 数据仅供参考，不构成投资建议</p>
         </footer>
     </div>
 
     <script>
-        // 生成粒子背景
+        // ============ 配置 ============
+        const INDEX_CODES = {
+            'sh000001': '上证指数',
+            'sz399001': '深证成指',
+            'sz399006': '创业板指',
+            'sh000300': '沪深300',
+            'sh000688': '科创50'
+        };
+        const CORS_PROXIES = [
+            'https://api.allorigins.win/raw?url=',
+            'https://corsproxy.io/?',
+            'https://api.codetabs.com/v1/proxy?quest='
+        ];
+        let autoRefreshInterval = null;
+        let isAutoRefresh = true;
+        let currentProxyIndex = 0;
+
+        // ============ 粒子背景 ============
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-                
-                const colors = [
-                    'rgba(245, 158, 11, 0.4)',
-                    'rgba(249, 115, 22, 0.3)',
-                    'rgba(59, 130, 246, 0.3)'
-                ];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                container.appendChild(particle);
+            for (let i = 0; i < 50; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 15 + 's';
+                p.style.animationDuration = (10 + Math.random() * 10) + 's';
+                const colors = ['rgba(245,158,11,0.4)', 'rgba(249,115,22,0.3)', 'rgba(59,130,246,0.3)'];
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(p);
             }
         }
-        createParticles();
 
-        // 滚动进度条
+        // ============ 滚动进度条 ============
         function updateProgressBar() {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
+            const st = document.documentElement.scrollTop || document.body.scrollTop;
+            const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progressBar').style.width = (st / sh * 100) + '%';
         }
         window.addEventListener('scroll', updateProgressBar);
 
-        // 数字计数动画
-        function animateNumbers() {
-            const numbers = document.querySelectorAll('.index-card .value');
-            numbers.forEach((el, index) => {
-                const text = el.textContent;
-                const target = parseFloat(text.replace(/[^0-9.]/g, ''));
-                const prefix = text.match(/^[^0-9]*/)[0];
-                const suffix = text.match(/[^0-9.]*$/)[0];
-                
-                let current = 0;
-                const duration = 1500;
-                const startTime = performance.now() + index * 200;
-                
-                function update(currentTime) {
-                    if (currentTime < startTime) {
-                        requestAnimationFrame(update);
-                        return;
-                    }
-                    
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const easeOut = 1 - Math.pow(1 - progress, 3);
-                    current = target * easeOut;
-                    
-                    if (text.includes('.')) {
-                        el.textContent = prefix + current.toFixed(2) + suffix;
-                    } else {
-                        el.textContent = prefix + Math.round(current) + suffix;
-                    }
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    }
-                }
-                
-                requestAnimationFrame(update);
+        // ============ 新浪指数数据（JSONP） ============
+        function fetchSinaIndex() {
+            return new Promise((resolve, reject) => {
+                const codes = Object.keys(INDEX_CODES).join(',');
+                const script = document.createElement('script');
+                script.src = `https://hq.sinajs.cn/list=${codes}`;
+                script.onload = () => {
+                    const results = {};
+                    Object.keys(INDEX_CODES).forEach(code => {
+                        const data = window[`hq_str_${code}`];
+                        if (data) results[code] = parseSinaIndex(data);
+                    });
+                    resolve(results);
+                };
+                script.onerror = () => reject(new Error('新浪接口加载失败'));
+                document.body.appendChild(script);
+                setTimeout(() => {
+                    if (!script.loaded) reject(new Error('新浪接口超时'));
+                }, 10000);
             });
         }
 
-        // 观察器触发动画
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        function parseSinaIndex(str) {
+            const p = str.split(',');
+            return {
+                name: p[0], open: parseFloat(p[1]), prevClose: parseFloat(p[2]),
+                current: parseFloat(p[3]), high: parseFloat(p[4]), low: parseFloat(p[5]),
+                volume: parseInt(p[8]), amount: parseFloat(p[9]),
+                date: p[30], time: p[31]
+            };
+        }
+
+        // ============ 东财板块数据 ============
+        async function fetchEastmoneySector(type, sortField, isAsc) {
+            const order = isAsc ? '0' : '1'; // 1=降序, 0=升序
+            const url = `https://push2.eastmoney.com/api/qt/clist/get?fid=${sortField}&po=${order}&pz=20&pn=1&np=1&fltt=2&invt=2&fs=m:90+t:${type}&fields=f12,f14,f2,f3,f62,f20,f21`;
+            const proxy = CORS_PROXIES[currentProxyIndex];
+            try {
+                const resp = await fetch(proxy + encodeURIComponent(url));
+                const data = await resp.json();
+                if (data && data.data && data.data.diff) return data.data.diff;
+                return null;
+            } catch (e) {
+                // 切换代理重试
+                currentProxyIndex = (currentProxyIndex + 1) % CORS_PROXIES.length;
+                throw e;
+            }
+        }
+
+        // ============ 格式化 ============
+        function formatMoney(n) {
+            if (!n) return '--';
+            if (n >= 100000000) return (n / 100000000).toFixed(2) + '亿';
+            if (n >= 10000) return (n / 10000).toFixed(2) + '万';
+            return n.toFixed(2);
+        }
+        function formatChange(p) {
+            if (p === undefined || p === null) return '--';
+            const sign = p > 0 ? '+' : '';
+            const cls = p > 0 ? 'up' : p < 0 ? 'down' : 'neutral';
+            return `<span class="${cls}">${sign}${p.toFixed(2)}%</span>`;
+        }
+        function formatAmount(v) {
+            if (!v) return '--';
+            return (v / 100000000).toFixed(2) + '亿';
+        }
+
+        // ============ 渲染 ============
+        function renderIndex(data) {
+            const grid = document.getElementById('indexGrid');
+            grid.innerHTML = '';
+            let upCount = 0, downCount = 0, totalChange = 0;
+            Object.keys(INDEX_CODES).forEach(code => {
+                const d = data[code];
+                if (!d) return;
+                const change = ((d.current - d.prevClose) / d.prevClose * 100);
+                const cls = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
+                const sign = change > 0 ? '+' : '';
+                if (change > 0) upCount++; else if (change < 0) downCount++;
+                totalChange += change;
+                const card = document.createElement('div');
+                card.className = 'index-card shimmer';
+                card.innerHTML = `
+                    <div class="name">${INDEX_CODES[code]}</div>
+                    <div class="value ${cls}">${d.current.toFixed(2)}</div>
+                    <div class="change ${cls}">${sign}${change.toFixed(2)}%</div>
+                    <div class="info">${d.time || ''} | 量: ${formatAmount(d.amount)}</div>
+                `;
+                grid.appendChild(card);
             });
-        }, { threshold: 0.1 });
+            // 市场风格判断
+            const avg = totalChange / Object.keys(data).length;
+            let style = '';
+            if (avg > 1.5) style = '强势上涨，科技成长风格明显';
+            else if (avg > 0.5) style = '温和上涨，权重与成长轮动';
+            else if (avg > -0.5) style = '震荡分化，结构性行情';
+            else style = '整体偏弱，防御风格占优';
+            document.getElementById('marketStyle').innerHTML =
+                `<strong style="color: var(--accent-gold);">市场风格：</strong>涨 ${upCount} 跌 ${downCount} 平 ${5-upCount-downCount} | 平均 ${avg>0?'+':''}${avg.toFixed(2)}% | ${style}`;
+        }
 
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // 页面加载完成后启动数字动画
-        window.addEventListener('load', () => {
-            setTimeout(animateNumbers, 500);
-        });
-
-        // 指数卡片点击效果
-        document.querySelectorAll('.index-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
+        function renderSectorTable(items, isInflow) {
+            if (!items || !items.length) return '<div class="error-msg">暂无数据</div>';
+            let html = '<table><tr><th>排名</th><th>板块</th><th>涨幅</th><th>主力净流</th></tr>';
+            items.forEach((item, i) => {
+                const change = item.f3 ? item.f3 / 100 : 0;
+                const money = item.f62 || 0;
+                const cls = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
+                const sign = change > 0 ? '+' : '';
+                const moneyCls = money > 0 ? 'up' : money < 0 ? 'down' : 'neutral';
+                html += `<tr><td>${i+1}</td><td><strong>${item.f14 || '--'}</strong></td>
+                    <td class="${cls}">${sign}${change.toFixed(2)}%</td>
+                    <td class="${moneyCls}">${money>0?'+':''}${formatMoney(money)}</td></tr>`;
             });
-        });
+            html += '</table>';
+            return html;
+        }
 
-        // 概念项点击展开
-        document.querySelectorAll('.concept-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const stocks = this.querySelector('.concept-stocks');
-                if (stocks.style.display === 'none') {
-                    stocks.style.display = 'block';
+        function renderConceptTable(items) {
+            if (!items || !items.length) return '<div class="error-msg">暂无数据</div>';
+            let html = '<table><tr><th>排名</th><th>概念</th><th>涨幅</th><th>主力净流</th><th>领涨股</th></tr>';
+            items.slice(0, 15).forEach((item, i) => {
+                const change = item.f3 ? item.f3 / 100 : 0;
+                const money = item.f62 || 0;
+                const cls = change > 0 ? 'up' : change < 0 ? 'down' : 'neutral';
+                const sign = change > 0 ? '+' : '';
+                const moneyCls = money > 0 ? 'up' : money < 0 ? 'down' : 'neutral';
+                html += `<tr><td>${i+1}</td><td><strong>${item.f14 || '--'}</strong></td>
+                    <td class="${cls}">${sign}${change.toFixed(2)}%</td>
+                    <td class="${moneyCls}">${money>0?'+':''}${formatMoney(money)}</td>
+                    <td style="font-size:0.75rem;color:var(--text-muted)">--</td></tr>`;
+            });
+            html += '</table>';
+            return html;
+        }
+
+        // ============ 汇总判断 ============
+        function updateSummary(inflow, outflow) {
+            if (!inflow || !outflow) return;
+            const top1 = inflow[0];
+            const topChange = top1 && top1.f3 ? top1.f3 / 100 : 0;
+            const topName = top1 ? top1.f14 : '--';
+            const summary = document.getElementById('marketSummary');
+            let text = `📊 收盘总结：今日`;
+            if (topChange > 3) text += `${topName}等强势领涨`;
+            else if (topChange > 1) text += `${topName}等温和上涨`;
+            else text += `整体震荡`;
+            text += `，主力流入${inflow.length > 0 ? inflow[0].f14 : '--'}等方向`;
+            text += `，流出${outflow.length > 0 ? outflow[0].f14 : '--'}等方向。`;
+            summary.textContent = text;
+        }
+
+        // ============ 主刷新逻辑 ============
+        async function refreshAllData() {
+            const icon = document.getElementById('refreshIcon');
+            icon.textContent = '⏳';
+            try {
+                // 1. 获取指数
+                const indexData = await fetchSinaIndex();
+                renderIndex(indexData);
+                // 2. 获取行业流入
+                const inflow = await fetchEastmoneySector(2, 'f62', false);
+                const inflowEl = document.getElementById('inflowTop');
+                if (inflow) {
+                    inflowEl.innerHTML = renderSectorTable(inflow.filter(x => x.f62 > 0), true);
                 } else {
-                    stocks.style.display = 'block'; // 始终显示，但添加高亮效果
+                    inflowEl.innerHTML = '<div class="error-msg">行业数据获取失败，请稍后重试</div>';
                 }
-                
-                this.style.background = 'linear-gradient(90deg, rgba(245, 158, 11, 0.15), transparent)';
-                setTimeout(() => {
-                    this.style.background = '';
-                }, 300);
-            });
-        });
+                // 3. 获取行业流出（用升序取负值）
+                const outflow = await fetchEastmoneySector(2, 'f62', true);
+                const outflowEl = document.getElementById('outflowTop');
+                if (outflow) {
+                    outflowEl.innerHTML = renderSectorTable(outflow.filter(x => x.f62 < 0), false);
+                } else {
+                    outflowEl.innerHTML = '<div class="error-msg">行业数据获取失败，请稍后重试</div>';
+                }
+                // 4. 获取概念板块
+                const concept = await fetchEastmoneySector(3, 'f3', false);
+                const conceptEl = document.getElementById('conceptRank');
+                if (concept) {
+                    conceptEl.innerHTML = renderConceptTable(concept);
+                } else {
+                    conceptEl.innerHTML = '<div class="error-msg">概念板块数据获取失败</div>';
+                }
+                // 更新汇总
+                updateSummary(inflow, outflow);
+                // 更新时间
+                const now = new Date();
+                document.getElementById('updateTime').textContent =
+                    `更新时间: ${now.toLocaleString('zh-CN')} | 数据源: 新浪/东财`;
+                document.getElementById('subtitle').textContent =
+                    `数据实时获取 | 自动刷新中 | 点击"立即刷新"手动更新`;
+            } catch (e) {
+                console.error('Refresh failed:', e);
+                document.getElementById('updateTime').textContent = '更新失败: ' + e.message + ' | 点击"手动数据模式"查看默认数据';
+            } finally {
+                icon.textContent = '🔄';
+            }
+        }
 
-        // 情绪阶段交互
-        document.querySelectorAll('.emotion-stage').forEach(stage => {
-            stage.addEventListener('click', function() {
-                document.querySelectorAll('.emotion-stage').forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        // ============ 自动刷新 ============
+        function toggleAutoRefresh() {
+            isAutoRefresh = !isAutoRefresh;
+            document.getElementById('autoIcon').textContent = isAutoRefresh ? '⏸️' : '▶️';
+            document.getElementById('autoStatus').textContent = isAutoRefresh ? '开启' : '暂停';
+            if (isAutoRefresh) {
+                autoRefreshInterval = setInterval(refreshAllData, 30000);
+            } else {
+                clearInterval(autoRefreshInterval);
+            }
+        }
 
-        // 表格行高亮效果
-        document.querySelectorAll('tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.2s ease';
+        // ============ 手动数据模式（fallback） ============
+        function showFallback() {
+            document.getElementById('marketSummary').textContent = '📊 收盘总结：今日是情绪较活跃期，主线从早到晚聚焦PCB/面板，下午扩散到半导体、存储芯片。电力设备、化工、汽车被资金抛弃。';
+            document.getElementById('subtitle').textContent = '手动数据模式 | 数据仅供参考';
+            // 指数默认数据
+            const fallbackIndex = {
+                'sh000001': { name: '上证指数', current: 4106.08, prevClose: 4089.71, amount: 140000000000, time: '15:00' },
+                'sz399001': { name: '深证成指', current: 15890.95, prevClose: 15685.12, amount: 169000000000, time: '15:00' },
+                'sz399006': { name: '创业板指', current: 4167.05, prevClose: 4103.41, amount: 83040000000, time: '15:00' },
+                'sh000300': { name: '沪深300', current: 4931.39, prevClose: 4884.06, amount: 85040000000, time: '15:00' },
+                'sh000688': { name: '科创50', current: 1840.82, prevClose: 1758.42, amount: 17690000000, time: '15:00' }
+            };
+            renderIndex(fallbackIndex);
+            // 板块默认数据
+            document.getElementById('inflowTop').innerHTML = renderSectorTable([
+                {f14: '电子', f3: 322, f62: 2598000000}, {f14: '半导体', f3: 413, f62: 1501000000},
+                {f14: '光学光电子', f3: 301, f62: 878000000}, {f14: '计算机设备', f3: 336, f62: 568000000},
+                {f14: '计算机', f3: 476, f62: 460000000}, {f14: '通信设备', f3: 630, f62: 2848000000},
+                {f14: '通信', f3: 422, f62: 2423000000}, {f14: '元件', f3: 415, f62: 2025000000}
+            ], true);
+            document.getElementById('outflowTop').innerHTML = renderSectorTable([
+                {f14: '有色金属', f3: -106, f62: -917000000}, {f14: '电力设备', f3: -81, f62: -739000000},
+                {f14: '小金属', f3: -243, f62: -758000000}, {f14: '化学制品', f3: -62, f62: -558000000},
+                {f14: '电池', f3: -10, f62: -452000000}, {f14: '通信', f3: -22, f62: -359000000},
+                {f14: '汽车', f3: -90, f62: -256000000}, {f14: '传媒', f3: -200, f62: -2752000000}
+            ], false);
+            document.getElementById('conceptRank').innerHTML = renderConceptTable([
+                {f14: '半导体/存储芯片', f3: 470, f62: 7000000000}, {f14: '消费电子/面板', f3: 568, f62: 5680000000},
+                {f14: 'PCB/元件', f3: 323, f62: 2700000000}, {f14: '玻璃基板', f3: 494, f62: 586000000},
+                {f14: '半导体设备/材料', f3: 284, f62: 3530000000}, {f14: '800V/电力设备', f3: 0, f62: 73000000}
+            ]);
+            document.getElementById('updateTime').textContent = '手动数据模式 | 点击"立即刷新"获取实时数据';
+        }
+
+        // ============ 情绪周期 ============
+        function setEmotion(el) {
+            document.querySelectorAll('.emotion-stage').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // ============ 笔记持久化 ============
+        function loadNotes() {
+            const saved = localStorage.getItem('reviewNotes');
+            if (saved) document.getElementById('reviewNotes').innerHTML = saved;
+        }
+
+        // ============ 初始化 ============
+        window.addEventListener('load', () => {
+            createParticles();
+            loadNotes();
+            // 先尝试API获取，失败则显示手动模式
+            refreshAllData().catch(() => {
+                showFallback();
             });
+            // 启动自动刷新
+            autoRefreshInterval = setInterval(refreshAllData, 30000);
         });
 
         // 鼠标跟随光效
@@ -1256,10 +613,7 @@
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
             document.body.style.background = `
-                radial-gradient(circle at ${x * 100}% ${y * 100}%, 
-                rgba(245, 158, 11, 0.03) 0%, 
-                transparent 50%),
-                var(--bg-primary)
+                radial-gradient(circle at ${x*100}% ${y*100}%, rgba(245,158,11,0.03) 0%, transparent 50%), var(--bg-primary)
             `;
         });
     </script>
